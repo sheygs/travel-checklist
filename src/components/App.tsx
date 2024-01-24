@@ -1,11 +1,10 @@
-import './App.css';
 import { useState } from 'react';
-import Header from './components/Header';
-import Form from './components/Form';
-import ListItem from './components/ListItem';
-import Statistics from './components/Statistic';
+import Header from './Header';
+import Form from './Form';
+import ListItem from './ListItem';
+import Statistics from './Statistic';
 
-import { TravelItem, items as sampleItems } from './data/items';
+import { TravelItem, items as sampleItems } from '../constants/items';
 
 function App() {
         const [items, setItems] = useState<TravelItem[]>(sampleItems);
@@ -29,6 +28,10 @@ function App() {
         };
 
         const handleClearList = (): void => {
+                const result = window.confirm('Are you sure you want to clear all items ?');
+
+                if (!result) return;
+
                 setItems([]);
         };
 

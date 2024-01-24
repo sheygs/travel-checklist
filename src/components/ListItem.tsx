@@ -1,5 +1,7 @@
+import { SetStateAction, useState } from 'react';
 import Item from './Item';
-import { TravelItem } from '../data/items';
+import { TravelItem, sortCategories, SortCategory } from '../constants/items';
+import { sortItemsByType } from '../utils/util';
 
 interface Props {
         items: TravelItem[];
@@ -9,10 +11,20 @@ interface Props {
 }
 
 const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): JSX.Element => {
+        const [sortBy, setSortBy] = useState<string>('0');
+
+        const isDisabled: boolean = items.length < 1;
+
+        const handleSortBy = (e: { target: { value: SetStateAction<string> } }): void => {
+                setSortBy(e.target.value);
+        };
+
+        const sortedItems = sortItemsByType(sortBy, items);
+
         return (
                 <div className="list">
                         <ul>
-                                {items.map((item: TravelItem) => (
+                                {sortedItems.map((item: TravelItem) => (
                                         <Item
                                                 key={item.id}
                                                 item={item}
@@ -22,16 +34,25 @@ const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): J
                                 ))}
                         </ul>
                         <div className="actions">
-                                <select
-                                        aria-label="sort"
-                                        value={''}
-                                        onChange={() => console.log('handleSort')}
-                                >
-                                        <option value="0"> Sort by Input Order</option>
-                                        <option value="1"> Sort by Description</option>
-                                        <option value="2"> Sort by Packed Status</option>
+                                <select aria-label="sortBy" value={sortBy} onChange={handleSortBy}>
+                                        {sortCategories.map(
+                                                (
+                                                        { value, description }: SortCategory,
+                                                        index: number
+                                                ) => (
+                                                        <option key={index + 1} value={value}>
+                                                                {' '}
+                                                                {description}
+                                                        </option>
+                                                )
+                                        )}
                                 </select>
-                                <button type="button" onClick={() => onClearItems()}>
+                                <button
+                                        className={isDisabled ? 'disable' : ''}
+                                        disabled={isDisabled}
+                                        type="button"
+                                        onClick={onClearItems}
+                                >
                                         Clear List
                                 </button>
                         </div>

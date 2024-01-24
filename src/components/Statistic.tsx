@@ -1,4 +1,4 @@
-import { TravelItem } from '../data/items';
+import { TravelItem } from '../constants/items';
 
 interface Props {
         items: TravelItem[];

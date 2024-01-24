@@ -1,4 +1,4 @@
-import { TravelItem } from '../data/items';
+import { TravelItem } from '../constants/items';
 
 interface Props {
         item: TravelItem;
@@ -22,7 +22,9 @@ const Item = ({ item, onToggleItem, onDeleteItem }: Props): JSX.Element => {
                         <span className={item.packed ? 'packed' : ''}>
                                 {item.quantity} {item.description}
                         </span>
-                        <button onClick={() => onDeleteItem(item.id)}>❌</button>
+                        <button type="button" onClick={() => onDeleteItem(item.id)}>
+                                ❌
+                        </button>
                 </li>
         );
 };

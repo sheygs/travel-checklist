@@ -1,9 +1,29 @@
+export interface SortCategory {
+        value: string;
+        description: string;
+}
+
 export interface TravelItem {
         id: number;
         description: string;
         quantity: number;
         packed: boolean;
 }
+
+export const sortCategories: SortCategory[] = [
+        {
+                value: '0',
+                description: 'Sort by Input Order',
+        },
+        {
+                value: '1',
+                description: 'Sort by Description',
+        },
+        {
+                value: '2',
+                description: 'Sort by Packed Status',
+        },
+];
 
 export const items: TravelItem[] = [
         { id: 1, description: 'Passports', quantity: 2, packed: false },
