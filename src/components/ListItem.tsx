@@ -4,9 +4,10 @@ import { TravelItem } from '../data/items';
 interface Props {
         items: TravelItem[];
         onToggleItem: (itemId: number) => void;
+        onDeleteItem: (itemId: number) => void;
 }
 
-const ListItem = ({ items, onToggleItem }: Props): JSX.Element => {
+const ListItem = ({ items, onToggleItem, onDeleteItem }: Props): JSX.Element => {
         return (
                 <div className="list">
                         <ul>
@@ -15,6 +16,7 @@ const ListItem = ({ items, onToggleItem }: Props): JSX.Element => {
                                                 key={item.id}
                                                 item={item}
                                                 onToggleItem={onToggleItem}
+                                                onDeleteItem={onDeleteItem}
                                         />
                                 ))}
                         </ul>

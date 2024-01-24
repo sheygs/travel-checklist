@@ -22,11 +22,21 @@ function App() {
                 );
         };
 
+        const handleDeleteItem = (itemId: number): void => {
+                setItems((items: TravelItem[]) =>
+                        items.filter((item: TravelItem) => item.id !== itemId)
+                );
+        };
+
         return (
                 <>
                         <Header />
                         <Form onAddItem={handleAddItem} />
-                        <ListItem items={items} onToggleItem={handleToggleItem} />
+                        <ListItem
+                                items={items}
+                                onToggleItem={handleToggleItem}
+                                onDeleteItem={handleDeleteItem}
+                        />
                         <Statistics />
                 </>
         );

@@ -3,9 +3,10 @@ import { TravelItem } from '../data/items';
 interface Props {
         item: TravelItem;
         onToggleItem: (itemId: number) => void;
+        onDeleteItem: (itemId: number) => void;
 }
 
-const Item = ({ item, onToggleItem }: Props): JSX.Element => {
+const Item = ({ item, onToggleItem, onDeleteItem }: Props): JSX.Element => {
         // convert boolean string to boolean
         // i.e. "true" -> true, "false" -> false
         const convertToBoolean = (packed: boolean) => JSON.parse(`${packed}`);
@@ -21,7 +22,7 @@ const Item = ({ item, onToggleItem }: Props): JSX.Element => {
                         <span className={item.packed ? 'packed' : ''}>
                                 {item.quantity} {item.description}
                         </span>
-                        ❌
+                        <button onClick={() => onDeleteItem(item.id)}>❌</button>
                 </li>
         );
 };
