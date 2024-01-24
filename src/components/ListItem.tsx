@@ -1,7 +1,11 @@
 import Item from './Item';
-import { items, TravelItem } from '../data/items';
+import { TravelItem } from '../data/items';
 
-const ListItem = (): JSX.Element => {
+interface Props {
+        items: TravelItem[];
+}
+
+const ListItem = ({ items }: Props): JSX.Element => {
         return (
                 <div className="list">
                         <ul>
