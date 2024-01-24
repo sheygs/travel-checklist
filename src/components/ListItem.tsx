@@ -5,9 +5,10 @@ interface Props {
         items: TravelItem[];
         onToggleItem: (itemId: number) => void;
         onDeleteItem: (itemId: number) => void;
+        onClearItems: () => void;
 }
 
-const ListItem = ({ items, onToggleItem, onDeleteItem }: Props): JSX.Element => {
+const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): JSX.Element => {
         return (
                 <div className="list">
                         <ul>
@@ -30,10 +31,7 @@ const ListItem = ({ items, onToggleItem, onDeleteItem }: Props): JSX.Element => 
                                         <option value="1"> Sort by Description</option>
                                         <option value="2"> Sort by Packed Status</option>
                                 </select>
-                                <button
-                                        type="button"
-                                        onClick={() => console.log('handleClearList')}
-                                >
+                                <button type="button" onClick={() => onClearItems()}>
                                         Clear List
                                 </button>
                         </div>

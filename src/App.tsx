@@ -28,6 +28,10 @@ function App() {
                 );
         };
 
+        const handleClearList = (): void => {
+                setItems([]);
+        };
+
         return (
                 <>
                         <Header />
@@ -36,6 +40,7 @@ function App() {
                                 items={items}
                                 onToggleItem={handleToggleItem}
                                 onDeleteItem={handleDeleteItem}
+                                onClearItems={handleClearList}
                         />
                         <Statistics items={items} />
                 </>
