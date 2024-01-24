@@ -1,4 +1,4 @@
-import { TravelItem } from '../constants/items';
+import { TravelItem } from '../constants/constant';
 
 export const sortItemsByType = (sortBy: string, items: TravelItem[]): TravelItem[] => {
         let sortedItems: TravelItem[] = [];

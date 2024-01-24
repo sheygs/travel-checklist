@@ -4,7 +4,7 @@ import Form from './Form';
 import ListItem from './ListItem';
 import Statistics from './Statistic';
 
-import { TravelItem, items as sampleItems } from '../constants/items';
+import { TravelItem, items as sampleItems } from '../constants/constant';
 
 function App() {
         const [items, setItems] = useState<TravelItem[]>(sampleItems);

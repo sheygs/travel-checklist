@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { TravelItem } from '../constants/items';
+import { TravelItem } from '../constants/constant';
 
 interface Props {
         onAddItem: (item: TravelItem) => void;

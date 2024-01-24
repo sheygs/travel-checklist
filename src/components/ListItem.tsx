@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from 'react';
 import Item from './Item';
-import { TravelItem, sortCategories, SortCategory } from '../constants/items';
+import { TravelItem, sortCategories, SortCategory } from '../constants/constant';
 import { sortItemsByType } from '../utils/util';
 
 interface Props {
