@@ -14,11 +14,19 @@ function App() {
                 setItems((items: TravelItem[]) => [...items, item]);
         };
 
+        const handleToggleItem = (itemId: number): void => {
+                setItems((items: TravelItem[]) =>
+                        items.map((item: TravelItem) =>
+                                item.id === itemId ? { ...item, packed: !item.packed } : item
+                        )
+                );
+        };
+
         return (
                 <>
                         <Header />
                         <Form onAddItem={handleAddItem} />
-                        <ListItem items={items} />
+                        <ListItem items={items} onToggleItem={handleToggleItem} />
                         <Statistics />
                 </>
         );

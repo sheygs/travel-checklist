@@ -3,14 +3,19 @@ import { TravelItem } from '../data/items';
 
 interface Props {
         items: TravelItem[];
+        onToggleItem: (itemId: number) => void;
 }
 
-const ListItem = ({ items }: Props): JSX.Element => {
+const ListItem = ({ items, onToggleItem }: Props): JSX.Element => {
         return (
                 <div className="list">
                         <ul>
                                 {items.map((item: TravelItem) => (
-                                        <Item key={item.id} {...item} />
+                                        <Item
+                                                key={item.id}
+                                                item={item}
+                                                onToggleItem={onToggleItem}
+                                        />
                                 ))}
                         </ul>
                         <div className="actions">
