@@ -1,11 +1,11 @@
 import { FormEvent, useState } from 'react';
-import { TravelItem } from '../constants/constant';
+import { TravelItem } from '../constants';
 
 interface Props {
         onAddItem: (item: TravelItem) => void;
 }
 
-const Form = ({ onAddItem }: Props): JSX.Element => {
+export const Form = ({ onAddItem }: Props): JSX.Element => {
         const optionValues: number[] = [...new Array(20)].map((_, i: number) => i + 1);
 
         const [quantity, setQuantity] = useState<number>(1);
@@ -56,5 +56,3 @@ const Form = ({ onAddItem }: Props): JSX.Element => {
                 </form>
         );
 };
-
-export default Form;

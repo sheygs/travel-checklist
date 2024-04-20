@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import Header from './Header';
-import Form from './Form';
-import ListItem from './ListItem';
-import Statistics from './Statistic';
+import { Header } from './Header';
+import { Form } from './Form';
+import { ListItem } from './ListItem';
+import { Statistics } from './Statistic';
 
-import { TravelItem, items as sampleItems } from '../constants/constant';
+import { TravelItem, items as sampleItems } from '../constants';
 
-function App() {
+export function App() {
         const [items, setItems] = useState<TravelItem[]>(sampleItems);
 
         const handleAddItem = (item: TravelItem): void => {
@@ -16,7 +16,9 @@ function App() {
         const handleToggleItem = (itemId: number): void => {
                 setItems((items: TravelItem[]) =>
                         items.map((item: TravelItem) =>
-                                item.id === itemId ? { ...item, packed: !item.packed } : item
+                                item.id === itemId
+                                        ? { ...item, packed: !item.packed }
+                                        : item
                         )
                 );
         };
@@ -28,7 +30,9 @@ function App() {
         };
 
         const handleClearList = (): void => {
-                const result = window.confirm('Are you sure you want to clear all items ?');
+                const result = window.confirm(
+                        'Are you sure you want to clear all items ?'
+                );
 
                 if (!result) return;
 
@@ -49,5 +53,3 @@ function App() {
                 </>
         );
 }
-
-export default App;
