@@ -1,4 +1,4 @@
-import { TravelItem } from '../constants/constant';
+import { TravelItem } from '../constants';
 
 interface Props {
         item: TravelItem;
@@ -6,7 +6,7 @@ interface Props {
         onDeleteItem: (itemId: number) => void;
 }
 
-const Item = ({ item, onToggleItem, onDeleteItem }: Props): JSX.Element => {
+export const Item = ({ item, onToggleItem, onDeleteItem }: Props): JSX.Element => {
         // convert boolean string to boolean
         // i.e. "true" -> true, "false" -> false
         const convertToBoolean = (packed: boolean) => JSON.parse(`${packed}`);
@@ -28,5 +28,3 @@ const Item = ({ item, onToggleItem, onDeleteItem }: Props): JSX.Element => {
                 </li>
         );
 };
-
-export default Item;

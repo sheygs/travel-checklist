@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from 'react';
-import Item from './Item';
-import { TravelItem, sortCategories, SortCategory } from '../constants/constant';
-import { sortItemsByType } from '../utils/util';
+import { Item } from './Item';
+import { TravelItem, sortCategories, SortCategory } from '../constants';
+import { sortItemsByType } from '../utils';
 
 interface Props {
         items: TravelItem[];
@@ -10,7 +10,12 @@ interface Props {
         onClearItems: () => void;
 }
 
-const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): JSX.Element => {
+export const ListItem = ({
+        items,
+        onToggleItem,
+        onDeleteItem,
+        onClearItems,
+}: Props): JSX.Element => {
         const [sortBy, setSortBy] = useState<string>('0');
 
         const isDisabled: boolean = items.length < 1;
@@ -34,13 +39,23 @@ const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): J
                                 ))}
                         </ul>
                         <div className="actions">
-                                <select aria-label="sortBy" value={sortBy} onChange={handleSortBy}>
+                                <select
+                                        aria-label="sortBy"
+                                        value={sortBy}
+                                        onChange={handleSortBy}
+                                >
                                         {sortCategories.map(
                                                 (
-                                                        { value, description }: SortCategory,
+                                                        {
+                                                                value,
+                                                                description,
+                                                        }: SortCategory,
                                                         index: number
                                                 ) => (
-                                                        <option key={index + 1} value={value}>
+                                                        <option
+                                                                key={index + 1}
+                                                                value={value}
+                                                        >
                                                                 {' '}
                                                                 {description}
                                                         </option>
@@ -59,5 +74,3 @@ const ListItem = ({ items, onToggleItem, onDeleteItem, onClearItems }: Props): J
                 </div>
         );
 };
-
-export default ListItem;
